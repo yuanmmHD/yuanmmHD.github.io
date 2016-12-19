@@ -6,8 +6,8 @@ var data = [
 	  	fileType: "folder",
 	  	fileDesc: "玉渊潭一角",	
 	  	albumType: "旅游",
-	  	posterId: 12,
-	  	posterSrc:"../upload/8.jpg",
+	  	posterId: 10,
+	  	posterSrc:"../upload/6.jpg",
 	  	createTime:new Date(2016,10,26,10,10)
 	},
 	{
@@ -84,43 +84,13 @@ var data = [
 	  	createTime:new Date(2016,10,26,10,10)
 	},
 	{
-		id: 9,
-	  	pid: 1,
-	  	fileName: "图片5",
-	  	fileType: "image",
-	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/5.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
 		id: 10,
 	  	pid: 1,
 	  	fileName: "图片6",
 	  	fileType: "image",
 	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/6.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
-		id: 11,
-	  	pid: 1,
-	  	fileName: "图片7",
-	  	fileType: "image",
-	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/7.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
-		id: 12,
-	  	pid: 1,
-	  	fileName: "图片8",
-	  	fileType: "image",
-	  	fileDesc: "",	
 	  	isPoster: true,
-	  	src:"../upload/8.jpg",
+	  	src:"../upload/6.jpg",
 	  	createTime:new Date(2016,10,26,10,10)
 	},
 	{
@@ -131,36 +101,6 @@ var data = [
 	  	fileDesc: "",	
 	  	isPoster: false,
 	  	src:"../upload/9.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
-		id: 14,
-	  	pid: 1,
-	  	fileName: "图片10",
-	  	fileType: "image",
-	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/10.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
-		id: 15,
-	  	pid: 1,
-	  	fileName: "图片11",
-	  	fileType: "image",
-	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/11.jpg",
-	  	createTime:new Date(2016,10,26,10,10)
-	},
-	{
-		id: 16,
-	  	pid: 1,
-	  	fileName: "图片12",
-	  	fileType: "image",
-	  	fileDesc: "",	
-	  	isPoster: false,
-	  	src:"../upload/12.jpg",
 	  	createTime:new Date(2016,10,26,10,10)
 	},
 	{
