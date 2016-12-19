@@ -74,18 +74,22 @@ $(function(){
 		
 		//文件夹的点击事件，点击显示相册列表,同时头部导航显示更新
 		$('.eachAlbumInfo').click(function(){
-			$('.albumBtnList').hide();
-			$('.photoBtnList').show();
 			var $this = $(this);
 			currentPid = $this.data('fileId');
+			$('.albumBtnList').hide();
+			$('.photoBtnList').show();
+			$('.photoBtnList .albumName').html(dataControl.getInfo(data,currentPid).fileName);
+			$albumList.html(createPhotosHtml(data,currentPid));//渲染相册列表页
+			
+			addPhotoMouseEvent();
 			var imgArr = dataControl.getSrc(data,currentPid);
 			if(imgArr.length){
 				setPosterImg(loadingImg,$('.loading').width(),$('.loading').height());
-				$('.loading').fadeIn();
+//				$('.loading').fadeIn();
 				var newImg = new Image();
 				var loadNum = 0;
-				imgLoad();
 				newImg.src = imgArr[loadNum];
+				imgLoad();
 				function imgLoad(){
 					newImg.onload = function(){
 						loadNum++;
@@ -95,12 +99,9 @@ $(function(){
 							return;
 						}
 						imgLoad();
-						$('.photoBtnList .albumName').html(dataControl.getInfo(data,currentPid).fileName);
-							$albumList.html(createPhotosHtml(data,currentPid));//渲染相册列表页
-							renderWaterFall();//瀑布流展示
-							addPhotoMouseEvent();
-						}
 					}
+					renderWaterFall();//瀑布流展示
+				}
 			}else{
 				$albumList.html(createDoraemon());
 			}
@@ -325,6 +326,8 @@ $(function(){
 	
 	//点击导航"相册"，导航消失，同时渲染列表
 	$('.photoBtnList .totalName').click(function(){
+		hideHeader();
+		$('#checkAll').removeClass('checkAllChecked');
 		currentPid = 0;
 		$('.albumBtnList').show();
 		$('.photoBtnList').hide();
@@ -819,4 +822,7 @@ $(function(){
 		return false;
 	}
 	
+	$('.container').mousedown(function(){
+		return false;
+	});
 })
