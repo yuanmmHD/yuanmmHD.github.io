@@ -1,0 +1,389 @@
+/*按钮操作列表*/
+.btnList{
+	margin-top: 20px;
+	height: 32px;
+	line-height: 32px;
+}
+.albumBtnList{
+}
+
+.btnList .btn{
+	display: inline-block;
+	margin-left: 4px;
+	padding: 0 12px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid rgba(255,255,255,.5);
+	color: rgba(255,255,255,.8);
+	transition: 300ms;
+}
+.btnList .btn:hover{
+	border-radius: 20px;
+	border-color: rgba(255,255,255,.8);
+	color: rgba(255,255,255,1);
+}
+
+.photoBtnList{
+	display: none;
+}
+.photoBtnList .checkAll{
+	margin-top: 6px;
+	width: 20px;
+	height: 20px;
+	background: #fff url(../images/checkbox.png) no-repeat;
+	border-radius: 3px;
+	border: 1px solid #D6D6D6;
+    box-shadow: 0 0 2px rgba(0,0,0,.15);
+	cursor: pointer;
+	margin-right: 20px;
+}
+.photoBtnList .checkAllChecked{
+	background: #fff url(../images/checkboxChecked.png) no-repeat;
+}
+.photoBtnList .totalName{
+	cursor: pointer;
+	color: rgba(255,255,255,.5);
+}
+.photoBtnList .sepSign{
+	color: rgba(255,255,255,.8);
+}
+.photoBtnList .totalName:hover{
+	color: rgba(255,255,255,1);
+}
+.photoBtnList .selectInfo{
+	width: 120px;
+	margin-left: 370px;
+	display: none;
+}
+.photoBtnList .selectInfo strong{
+	padding: 0 5px;
+	color: red;
+}
+.photoBtnList .otherOpe{
+	display: none;
+}
+/*相册列表*/
+.eachAlbumBox{
+	margin: 18px 18px 0 0;
+	width: 172px;
+	height: 270px;
+	position: relative;
+}
+.eachAlbumInfo{
+	position: absolute;
+	top: 70px;
+	width: 172px;
+	height: 200px;
+	padding: 5px;
+	box-sizing: border-box;
+	box-shadow: 0 2px 3px 3px rgba(50,50,50,.2);
+	background-color: rgba(40,40,40,.6);
+	cursor: pointer;
+	border-radius: 6px;
+}
+.eachAlbumInfo:hover{
+	box-shadow:inset 0 0 3px 3px rgba(0,255,0,0.06);
+}
+
+/*挂钩*/
+.eachAlbumBox .dotHook{
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 100%;
+	height: 70px;
+	z-index: 50;
+}
+.eachAlbumBox .bigNail{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -15px;
+	background-image: url(../images/bigNail1.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 70;
+}
+.eachAlbumBox .smallNail{
+	width: 10px;
+	height: 10px;
+	background-color: rgba(0,0,0,.9);
+	position: absolute;
+	top: 90px;
+	border-radius: 50%;
+	z-index: 60;
+}
+.eachAlbumBox .leftNail{
+	left: 30px;
+}
+.eachAlbumBox .rightNail{
+	right: 30px;
+}
+.eachAlbumBox .line{
+	position: absolute;
+	top: 93px;
+	width: 101px;
+	height: 4px;
+	background-color: #fff;
+	border-radius: 4px;
+	z-index: 50;
+}
+.eachAlbumBox .leftLine{
+	left: 35px;
+	transform: rotate(-59deg);
+	transform-origin: left center;
+}
+.eachAlbumBox .rightLine{
+	right: 35px;
+	transform: rotate(59deg);
+	transform-origin: right center;
+}
+
+/*挂钩结束*/
+
+/*新加样式  --2016-12-18*/
+.eachAlbumInfo .albumType{
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	z-index: 20;
+	margin-left: -30px;
+	background: url(../images/23.gif) no-repeat;
+	background-size: cover;
+	background-clip: -webkit-text;
+	-webkit-background-clip:text;
+	color: rgba(0,0,0,0);
+	font: bold 30px "华文行楷";
+}
+.eachAlbumInfo .albumBox{
+	position: relative;
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+}
+.eachAlbumInfo .albumBox img{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.eachAlbumInfo:nth-of-type(6n){
+	margin-right: 0;
+}
+.eachAlbumInfo .imgRounded{
+	border-radius: 6px;
+}
+.eachAlbumInfo .albumOpe{
+	position: absolute;
+	width: 160px;
+	/*height: 160px;*/
+	max-height: 160px;
+	top: 5px;
+}
+.eachAlbumInfo .albumOpe .opeBtn{
+	position: absolute;
+	top: 0;
+	right: 5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #D6D6D6;
+    box-shadow: 0 0 2px rgba(0,0,0,.15);
+	display: none;
+}
+.eachAlbumInfo .opeBtn .ico_ope{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+    top: 2px;
+    left: 2px;
+	background-position: -508px -216px;
+}
+.eachAlbumInfo .dropdownMenu{
+	display: none;
+	position: absolute;
+	background-color: rgba(255,255,255,.8);
+	border-radius: 4px;
+	padding: 5px 0;
+    top: 24px;
+    right: 5px;
+    min-width: 140px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	border: 1px solid rgba(0,0,0,.1);
+}
+.eachAlbumInfo li>a{
+	display: block;
+	padding: 5px 20px;
+	white-space: nowrap;
+	color: #333;
+}
+.eachAlbumInfo li>a:hover{
+	background-color: rgba(150,150,150,0.15);
+}
+.eachAlbumInfo .dropdownMenu .ico_edit,
+.eachAlbumInfo .dropdownMenu .ico_cover,
+.eachAlbumInfo .dropdownMenu .ico_del{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: -3px;
+	margin-right: 10px;
+}
+.eachAlbumInfo .dropdownMenu .ico_edit{
+	background-position: -508px -54px;
+}
+.eachAlbumInfo .dropdownMenu .ico_cover{
+	background-position: -508px -90px;
+}
+.eachAlbumInfo .dropdownMenu .ico_del{
+	background-position: -508px -162px;
+}
+.eachAlbumInfo:nth-child(6n){
+	margin-right: 0;
+}
+/*照片数量*/
+.eachAlbumInfo .photoNum{
+	position: absolute;
+	bottom: 2px;
+	right: 5px;
+    border-radius: 6px;
+    font-size: 20px;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: rgba(0,0,0,.6);
+}
+.eachAlbumInfo .albumName{
+	margin-top: 8px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+#maskLayer{
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,1);
+	display: none;
+}
+#maskLayer .maskLayerHeader{
+	padding: 0 10px;
+	height: 38px;
+	line-height: 38px;
+	background-color: rgba(192,192,192,.2);
+}
+.maskLayerHeader .maskLayerClose{
+	text-align: center;
+	font-size: 30px;
+	margin-top: -4px;
+	overflow: hidden;
+	cursor: pointer;
+}
+#maskLayer .previewPhoto{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#maskLayer .previewPic{
+	position: absolute;
+	left: 0;
+	top: 38px;
+}
+#maskLayer .previewPicOpe{
+	position: absolute;
+	width: 160px;
+	bottom: 5px;
+	left: 0;
+	height: 60px;
+	background-color: rgba(0,0,0,.7);
+	z-index: 10;
+}
+#maskLayer .prev,#maskLayer .next{
+	line-height: 60px;
+	padding: 0 15px;
+	cursor: pointer;
+}
+#maskLayer .photoIndex_photoCount{
+	width: 100px;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -50px;
+	text-align: center;
+}
+.bgSong{
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	left: 50%;
+	margin-left: -200px;
+	overflow: hidden;
+	bottom: 0;
+}
+.bgSong .songNav{
+	position: absolute;
+	bottom: -200px;
+	width: 400px;
+	height: 400px;
+	left: 0;
+	border-radius: 50%;
+	overflow: hidden;
+	opacity: 0;
+	transition: 1s;
+}
+.bgSong .songNav li{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 300px;
+	height: 300px;
+	background-color: rgba(255,0,255,.5);
+	border: 1px solid rgba(255,255,255,.1);
+	left: 100px;
+	cursor: pointer;
+	transition: 500ms;
+}
+.bgSong li:hover{
+	background-color: rgba(64,0,64,1);
+}
+.bgSong .songCenterBtn{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	left: 100px;
+	bottom: -120px;
+	color: #fff;
+	background-color: rgb(255,57,57);
+	border-radius: 50%;
+	text-align: center;
+	line-height: 100px;
+	font-size: 46px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.loading{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: none;
+}
+#loadingImg{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}

@@ -1,0 +1,129 @@
+.modal{
+	position: absolute;
+	color: #000;
+	left: 0;
+	top: 0;
+	display: none;
+	z-index: 80;
+}
+.modal .modalContent{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 700px;
+	min-height: 450px;
+	background-color: #fff;
+	border-radius: 6px;
+	font-size: 14px;
+	border: 1px solid rgba(0,0,0,.1);
+}
+.modal .modalContent .modalHeader{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 60px;
+	padding: 0 15px;
+	border-bottom: 1px solid #e5e5e5;
+	box-sizing: border-box;
+}
+.modal .modalHeader:hover{
+	cursor: move;
+}
+.modal .modalContent .modalHeader .modalTitle{
+	font-size: 20px;
+	line-height: 60px;
+}
+/*模态框右上角按钮*/
+.modal .modalContent .modalHeader .modalClose{
+	margin-top: 14px;
+	width: 30px;
+	height: 30px;
+	background-color: rgba(0,0,0,0.01);
+	border-radius: 50%;
+	text-shadow: none;
+	text-align: center;
+	box-shadow: 0 2px 2px 0px rgba(0,0,0,.5);
+	outline: none;
+	cursor: pointer;
+	color: rgba(0,0,0,.5);
+	font-size: 26px;
+	line-height: 26px;
+}
+.modal .modalContent .modalBody{
+	position: absolute;
+	left: 0;
+	top: 60px;
+	width: 100%;
+	padding: 15px 15px;
+	box-sizing: border-box;
+}
+.modal .modalBody .formGroup{
+	margin-bottom: 10px;
+}
+.modal .modalBody label{
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+.modal .modalBody .formControl{
+	width: 100%;
+	display: block;
+	height: 30px;
+	color: #555;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	font-size: 14px;
+	padding: 2px 5px;
+	box-sizing: border-box;
+}
+.modal .modalBody #albumDesc{
+	padding: 6px 5px;
+	height: 80px;
+}
+.modal .modalContent .modalFooter{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	height: 60px;
+	border-top: 1px solid #e5e5e5;
+	padding: 0 15px;
+	box-sizing: border-box;
+	text-align: right;
+}
+.modal .modalFooter .btn{
+	margin-top: 18px;
+	display: inline-block;
+	padding: 6px 12px;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	font-size: 16px;
+}
+.modal .modalFooter .btnCancel,.modal .modalFooter .btnCancelEdit{
+	color: gray;
+	background-color: #fff;
+	border-color: #ccc;
+}
+.modal .modalFooter .btnConfirm,.modal .modalFooter .btnUpdate{
+	margin-left: 5px;
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+/*警告框*/
+.alertDanger{
+	color: #a94442;
+	background-color: #f2dede;
+	border: 1px solid #ebccd1;
+	padding: 12px;
+	border-radius: 4px;
+	text-align: center;
+	display: none;
+}

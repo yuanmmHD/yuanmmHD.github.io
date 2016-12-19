@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>yuanmm's albumShow</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bg.css"/>	
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/waterFall.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/doraemon.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/commonModal.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/music.css"/>
+	</head>
+	<body>
+		<audio id="myAudio" src="../audio/blueSky.mp3" autoplay loop></audio>
+		<canvas id="bgCanvas"></canvas>
+		<!--按钮列表-->
+		<div class="container clearfix btnList">
+			<div class="albumBtnList">
+				<a class="btn createAlbumBtn" href="javascript:;" id="createAlbumBtn">创建相册</a>
+			</div>
+			<div class="photoBtnList clearfix">
+				<span class="checkAll fl" id="checkAll"></span>
+				<div class="breadcrumbNav fl">
+					<span class="totalName">相册</span>
+					<span class="sepSign">&nbsp;》</span>
+					<span class="albumName">玉渊潭</span>
+				</div>
+				<span class="selectInfo fl">共选择了<strong class="checkedNum"> 12 </strong>张</span>
+				<div class="otherOpe fr">
+					<a class="btn deleteBtn" href="javascript:;" id="deleteBtn">删除</a>
+					<a class="btn moveToBtn" href="javascript:;" id="moveToBtn">移动到</a>
+				</div>
+			</div>
+		</div>
+		
+		<!--相册列表-->
+		<div class="container clearfix albumList">
+				<!--<div class="eachAlbumInfo">
+					<div class="albumBox imgRounded">
+						<img src="../upload/23.jpg" class="imgPoster" style="width: 160px;" />
+						<div class="albumOpe">
+							<span class="opeBtn">
+								<i class="bg ico_ope"></i>
+							</span>
+							<ul class="dropdownMenu">
+							  	<li><a href="#"><i class="bg ico_edit"></i> 编辑</a></li>
+							  	<li><a href="#"><i class="bg ico_cover"></i> 设置封面</a></li>
+							  	<li><a href="#"><i class="bg ico_del"></i> 删除</a></li>
+							</ul>
+						</div>
+						<span class="photoNum">12</span>
+					</div>
+					<h3 class="albumName"><span>旅游</span></h3>
+				</div>
+			</div>-->
+			<!--<ul id="photoList">
+			</ul>-->
+		</div>
+		<!--创建、编辑模态框开始-->
+		<div class="modal">
+			<div class="modalContent">
+				<div class="modalHeader clearfix">
+					<span class="modalClose fr" id="modalClose">×</span>
+					<h3 class="modalTitle fl"></h3>
+				</div>
+				<div class="modalBody">
+					<form method="post" action="/add">
+	                    <div class="formGroup">
+	                        <label for="albumName">相册名称：</label>
+	                        <input type="text" class="formControl" name="albumName" id="albumName" placeholder="相册名称" required>
+	                    </div>
+	                    <div class="formGroup">
+	                        <label for="albumDesc">相册描述：</label>
+	                        <textarea class="formControl" id="albumDesc" name="albumDesc" placeholder="说说这个相册的故事（非必填）"></textarea>
+	                    </div>
+	                    <div class="formGroup">
+	                        <label for="albumType">分类：</label>
+	                        <select name="albumType" id="albumType" class="formControl">
+	                            <option value="旅游">旅游</option>
+	                            <option value="美景">美景</option>
+	                            <option value="朋友">朋友</option>
+	                            <option value="卡通">卡通</option>
+	                            <option value="其他">其他</option>
+	                        </select>
+	                    </div>
+	                </form>
+	            	<div class="alertDanger"></div>
+				</div>
+				<div class="modalFooter">
+	                <input type="button" class="btn btnCancel" id="btnCancel" value="取消" />
+	                <input type="submit" class="btn btnConfirm" id="btnConfirm" value="确定" />
+				</div>
+			</div>
+		</div>			
+		<!--创建、编辑结束-->
+		
+		<!--遮罩层开始-->
+		<div class="maskLayer" id="maskLayer">
+			<header class="maskLayerHeader clearfix">
+				<span class="photoName_albumName fl"></span>
+				<span class="photoIndex_photoCount fl"></span>
+				<span class="maskLayerClose fr">×</span>
+			</header>
+			<section class="previewPic" id="previewPic">
+				<img src="" class="previewPhoto" />
+				<ul class="previewPicOpe clearfix">
+					<li class="prev fl">上一张</li>
+					<li class="next fr">下一张</li>
+				</ul>
+			</section>
+		</div>
+		<!--遮罩层结束-->
+		<!--删除模态框开始-->
+		<div class="deleteBox">
+			<header class="modalHeader clearfix">
+				<h3 class="modalTitle fl">删除提示</h3>
+				<div class="modalClose fr">×</div>
+			</header>
+			<section class="modalBody">
+				<span class="warnIco"></span>
+				<span class="deleteInfo">确定要删除吗？</span>
+			</section>
+			<footer class="modalFooter clearfix">
+				<div class="deleteCancel fr">取消</div>
+				<div class="deleteConfirm fr">确定</div>
+			</footer>
+		</div>
+		<!--删除模态框结束-->
+		
+		<!--公用模态框   根据点击的按钮确定模态框内的内容-->
+		<div class="commonModal">
+			<header class="modalHeader clearfix">
+				<h3 class="modalTitle fl"></h3>
+				<div class="modalClose fr">×</div>
+			</header>
+			<section class="modalBody">
+				<ul class="smallAlbumList clearfix"></ul>
+				<div class="dangerInfo"></div>
+			</section>
+			<footer class="modalFooter clearfix">
+				<div class="modalConfirm fr"></div>
+			</footer>
+		</div>		
+		<!--公用模态框结束-->
+		
+		<!--操纵结束提示框开始-->
+		<div class="successTipBox">
+			<span class="successIco"></span>
+			<span class="tipInfo">操作成功</span>
+		</div>
+		
+		<div class="warnTipBox">
+			<span class="warnIco"></span>
+			<span class="tipInfo">失败</span>
+		</div>
+		<!--操纵结束提示框结束-->
+		
+		<!--设置一个统一的遮罩层-->
+		<div class="commonBg"></div>
+
+		<!--设置背景音乐开始-->
+		<div class="musicBg">
+			<div class="music clearfix">
+				<ul class="playList fl">
+					<li class="fl musicSprite prevSong" id="prevSong" title="上一首"></li>
+					<li class="fl musicSprite pause" id="playPause" title="暂停"></li>
+					<li class="fl musicSprite nextSong" id="nextSong" title="下一首"></li>
+				</ul>
+				<div class="songNameBox fl">
+					<span class="songName">blueSky</span>
+				</div>
+			</div>
+		</div>
+		<!--设置背景音乐结束-->
+		
+		<div class="loading">
+			<img src="../images/loading.gif" id="loadingImg"/>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--[if IE]>
+			<script src="../js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+		<script src="../js/bgGalaxy.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/bgSong.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/dataControl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hotHookBg.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/renderHtml.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/waterFall.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

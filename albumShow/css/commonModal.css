@@ -1,0 +1,215 @@
+.commonModal{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 530px;
+	height: 400px;
+	overflow: hidden;
+	z-index: 100;
+	display: none;
+	border-radius: 6px;
+	background-color: #fff;
+	color: #000;
+}
+.commonModal .modalHeader{
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+}
+.commonModal .modalClose,.deleteBox .modalClose{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 5px;
+	font-size: 20px;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,0.01);
+	text-shadow: none;
+	box-shadow: 0 2px 2px 0px rgba(0,0,0,.5);
+	outline: none;
+	color: rgba(0,0,0,.5);
+}
+
+.commonModal .modalBody{
+	height: 320px;
+	border-top: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	padding: 6px 15px;
+	box-sizing: border-box;
+}
+.smallAlbumList{
+	height: 260px;
+	overflow: auto;
+}
+.smallAlbumList li{
+	position: relative;
+	width: 90px;
+	height: 90px;
+	margin: 3px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	overflow: hidden;
+	border-radius: 6px;
+}
+.smallAlbumList li:hover{
+	border-color: red;
+	opacity: .7;
+}
+.smallAlbumList img{
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 6px;
+}
+.smallAlbumList .commonCheckBox{
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+}
+.smallAlbumList .commonChecked{
+	background:#fff url(../images/checkboxChecked.png) no-repeat;
+}
+.smallAlbumList .active{
+	border-color: orangered;
+}
+.smallAlbumList .albumName,.smallAlbumList .photoName{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	height: 24px;
+	line-height: 24px;
+	background-color: rgba(0,0,0,.6);
+}
+.commonModal .modalFooter{
+	height: 40px;
+	padding: 0 10px;
+	line-height: 40px;
+}
+.commonModal .modalConfirm{
+	width: 60px;
+	height: 30px;
+	color: #fff;
+	background-color: #337ab7;
+	border: 1px solid #2e6da4;
+	font-size: 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 5px;
+	line-height: 30px;
+	text-align: center;
+}
+/*删除提示框*/
+.deleteBox{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 360px;
+	height: 220px;
+	display: none;
+	border-radius: 6px;
+	background-color: #fff;
+	color: #000;
+	z-index: 200;
+}
+.deleteBox .modalHeader{
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+}
+.deleteBox .modalBody{
+	width: 380px;
+	height: 140px;
+	padding: 20px 30px;
+	border-top: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	box-sizing: border-box;
+}
+.deleteBox .modalFooter{
+	height: 40px;
+	padding: 0 10px;
+	line-height: 40px;
+}
+.deleteBox .deleteCancel,.deleteBox .deleteConfirm{
+	width: 50px;
+	height: 30px;
+	color: #fff;
+	background-color: #337ab7;
+	border: 1px solid #2e6da4;
+	font-size: 14px;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 5px 0 0 10px;
+	line-height: 30px;
+	text-align: center;
+}
+.deleteBox strong{
+	padding: 0 5px;
+	color: red;
+}
+.dangerInfo{
+	height: 40px;
+	color: #a94442;
+	background-color: #f2dede;
+	border: 1px solid #ebccd1;
+	border-radius: 4px;
+	text-align: center;
+	z-index: 1000;
+	line-height: 40px;
+	margin-top: 5px;
+	display: none;
+}
+/*操作成功提示框*/
+.successTipBox,.warnTipBox{
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -125px;
+	width: 250px;
+	height: 70px;
+	padding: 23px 30px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	background-color: rgba(255,255,255,1);
+	color: #080808;
+	font-size: 14px;
+	display: none;
+}
+.successTipBox .successIco{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background: url(../images/successIco.png) no-repeat;
+	background-size: contain;
+	vertical-align: -5px;
+}
+.warnTipBox .warnIco{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background: url(../images/warn.png) no-repeat;
+	background-size: contain;
+	vertical-align: -5px;
+}
+.deleteBox .warnIco{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background: url(../images/warn.png) no-repeat;
+	background-size: contain;
+	vertical-align: -5px;
+}
+.commonModal .modalHeader:hover,.deleteBox .modalHeader:hover{
+	cursor: move;
+}

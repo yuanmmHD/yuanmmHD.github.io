@@ -1,0 +1,69 @@
+.musicBg{
+	width: 40%;
+	height: 80px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0);
+}
+.music{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	background-color: rgba(0,0,0,0);
+	display: none;
+}
+.musicSprite{
+	background-image: url(../images/music.png);
+	background-repeat: no-repeat;
+}
+.music .playList{
+	width: 210px;
+	margin-left: 10%;
+	margin-top: 11px;
+	opacity: .3;
+}
+.music .play,.music .pause{
+	width: 42px;
+	height: 58px;
+	margin: 0 40px;
+	cursor: pointer;
+}
+.music .play{
+	background-position: 0 0;/* -56px 0 */
+}
+.music .pause{
+	background-position: -56px 0;
+}
+.music .prevSong,.music .nextSong{
+	width: 38px;
+	height: 44px;
+	margin-top: 7px;
+	cursor: pointer;
+}
+.music .prevSong{
+	background-position: 0 -57px;
+}
+.music .nextSong{
+	background-position: 0 -102px;
+}
+.music .play:hover,
+.music .pause:hover,
+.music .prevSong:hover,
+.music .nextSong:hover{
+	opacity: .8;
+}
+.music .songNameBox{
+	width: 200px;
+	height: 100%;
+	margin-left: 20px;
+	position: relative;
+	overflow: hidden;
+}
+.music .songName{
+	position: absolute;
+	right: 0;
+}
