@@ -27,7 +27,7 @@ $(function(){
 	}
 	var $eachAlbumInfo = $('.eachAlbumInfo');
 	
-	//为照片的上部按钮随机添加背景
+	//为照片的上部按钮添加背景
 	function setBigNailBg(){
 		$.each($('.bigNail'), function(index,item) {
 			item.style.backgroundImage = hotHookBg[index%hotHookBg.length].bgUrl
@@ -79,13 +79,9 @@ $(function(){
 			$('.albumBtnList').hide();
 			$('.photoBtnList').show();
 			$('.photoBtnList .albumName').html(dataControl.getInfo(data,currentPid).fileName);
-			$albumList.html(createPhotosHtml(data,currentPid));//渲染相册列表页
-			
-			addPhotoMouseEvent();
 			var imgArr = dataControl.getSrc(data,currentPid);
 			if(imgArr.length){
 				setPosterImg(loadingImg,$('.loading').width(),$('.loading').height());
-//				$('.loading').fadeIn();
 				var newImg = new Image();
 				var loadNum = 0;
 				newImg.src = imgArr[loadNum];
@@ -93,14 +89,16 @@ $(function(){
 				function imgLoad(){
 					newImg.onload = function(){
 						loadNum++;
+						console.log(loadNum);
 						newImg.src = imgArr[loadNum];
-						if(loadNum == imgArr.length - 1){
-							$('.loading').hide();
+						if(loadNum == imgArr.length){
+							$albumList.html(createPhotosHtml(data,currentPid));//渲染相册列表页
+							addPhotoMouseEvent();
+							renderWaterFall();//瀑布流展示
 							return;
 						}
 						imgLoad();
 					}
-					renderWaterFall();//瀑布流展示
 				}
 			}else{
 				$albumList.html(createDoraemon());
@@ -108,6 +106,11 @@ $(function(){
 		})
 	}
 	
+	var currentParentInfo;
+	var currentLevelEles;
+	var index;
+	var imgInit;
+	var isPreview = false;
 	//照片的移入、移出、点击事件
 	function addPhotoMouseEvent(){
 		$('.eachPhoto').mouseenter(function(){
@@ -170,12 +173,88 @@ $(function(){
 			}
 			return false;
 		});
+		
 		//照片的点击事件，出现遮罩层，图片放大
 		$('.eachPhoto').click(function(){
+			isPreview = true;
 			maskLayerSettings();
-			eachPhotoClickEvent($(this).data('fileId'));
+			fileId = $(this).data('fileId');
+			//根据当前的fileId找到所需要的所有信息（当前文件名，当前图片地址，当前父级文件名，当前层级所有的图片地址）
+			currentInfo = dataControl.getInfo(data,fileId);
+			currentPid = currentInfo.pid;
+			currentParentInfo = dataControl.getInfo(data,currentPid);
+			currentLevelEles = dataControl.getChildId(data,currentPid);
+			index = currentLevelEles.indexOf(currentInfo);
+			//获取浏览图片的img标签，因为要根据所更换的图片的不同尺寸获取图片的真实宽高，来决定显示图片的宽高及位置，所以使用原生js（！！）
+			imgInit = document.querySelector('.previewPhoto');
+			renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
 		});
 	};
+	
+	//下一张
+	$('.next').click(function(){
+		next();
+		return false;
+	});
+	//上一张
+	$('.prev').click(function(){
+		prev();
+		return false;
+	});
+	//预览关闭
+	$('#maskLayer .maskLayerClose').click(function(){
+		if($('#maskLayer').hasClass('animated zoomIn')){
+			$('#maskLayer').removeClass('animated zoomIn');
+		}
+		$('#maskLayer').addClass('animated zoomOut');
+		setTimeout(function(){
+			$('#maskLayer').hide();
+		},800);
+		isPreview = false;
+	});
+
+	//键盘切换上一张，下一张
+	$(window).keydown(function(e){
+		if(isPreview){
+			switch (e.which){
+				case 37:
+					prev();
+					break;
+				case 39:
+					next();
+					break;
+			}
+		}
+	});
+	
+	//上一张
+	function next(){
+		index ++;
+		$('.previewTipBox').hide();
+		if(index > currentLevelEles.length - 1){
+			index = currentLevelEles.length - 1;
+			$('.previewTipBox').show();
+			$('.previewTipBox .tipInfo').html('已是当前相册最后一张了');
+		}
+		renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
+	}
+	
+	//下一张
+	function prev(){
+		index --;
+		$('.previewTipBox').hide();
+		if(index < 0){
+			index = 0;
+			$('.previewTipBox').show();
+			$('.previewTipBox .tipInfo').html('已是当前相册第一张了');
+		}
+		renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
+	}
+	
+	//点击提示框关闭按钮
+	$('.previewTipBox .closeTipBox').click(function(){
+		$('.previewTipBox').hide();
+	});
 	
 	//阻止canvas的mousedown事件冒泡
 	$('.eachAlbumInfo').mousedown(function(){
@@ -241,7 +320,7 @@ $(function(){
 	/**
 	 * 点击确认按钮
 	 * 	关闭模态框
-	 * 	填完表单后，提交进行重命名检测（待完成）
+	 * 	填完表单后，提交进行重命名检测
 	 * 	添加文件夹
 	 * 	清空表单数据
 	 */	
@@ -324,7 +403,7 @@ $(function(){
 		return false;
 	});
 	
-	//点击导航"相册"，导航消失，同时渲染列表
+	//点击导航"相册"，头部消失，导航消失，同时渲染列表
 	$('.photoBtnList .totalName').click(function(){
 		hideHeader();
 		$('#checkAll').removeClass('checkAllChecked');
@@ -378,11 +457,7 @@ $(function(){
 			$albumList.html(createPhotosHtml(data,currentPid));//渲染相册列表页
 			$('.eachPhoto').removeClass('animated flipInX');
 			addPhotoMouseEvent();
-			var index = 0;
-			$('img').load(function(){
-				index++;
-				renderWaterFall();
-			});
+			renderWaterFall();
 		} else {
 			$albumList.html(createDoraemon());
 			dataControl.setPosterNone(currentPid);
@@ -545,6 +620,7 @@ $(function(){
 	
 	//拖拽
 	function drag(obj1,obj2){
+		obj2 = obj2 || obj1;
 		var isMove = false;
 		var disX;
 		var disY;
@@ -569,7 +645,7 @@ $(function(){
 		});
 	}
 	
-	//点击相册，渲染相册列表
+	//点击相册，渲染相册列表(瀑布流)
 	function renderWaterFall(){
 		$("#photoList").pinterestGrid({
 			paddingX: 8,
@@ -587,7 +663,6 @@ $(function(){
 		$('#albumType').val('旅游');  
 		$alertDanger.hide();
 	}
-	
 	
 	//照片缩略图相关设置
 	function maskLayerSettings(){
@@ -612,45 +687,6 @@ $(function(){
 			left: ($(window).innerWidth() - $('.previewPicOpe').width()) / 2
 		});
 		
-		$('#maskLayer .maskLayerClose').click(function(){
-			if($('#maskLayer').hasClass('animated zoomIn')){
-				$('#maskLayer').removeClass('animated zoomIn');
-			}
-			$('#maskLayer').addClass('animated zoomOut');
-			setTimeout(function(){
-				$('#maskLayer').hide();
-			},800);
-		});
-	}
-	
-	//每张照片的点击事件
-	function eachPhotoClickEvent(fileId){
-		//根据当前的fileId找到所需要的所有信息（当前文件名，当前图片地址，当前父级文件名，当前层级所有的图片地址）
-		var currentInfo = dataControl.getInfo(data,fileId);
-		var currentPid = currentInfo.pid;
-		var currentParentInfo = dataControl.getInfo(data,currentPid);
-		var currentLevelEles = dataControl.getChildId(data,currentPid);
-		var index = currentLevelEles.indexOf(currentInfo);
-		//获取浏览图片的img标签，因为要根据所更换的图片的不同尺寸获取图片的真实宽高，来决定显示图片的宽高及位置，所以使用原生js（！！）
-		var imgInit = document.querySelector('.previewPhoto');
-		renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
-		//下一张
-		$('.next').click(function(){
-			index ++;
-			if(index > currentLevelEles.length - 1){
-				index = currentLevelEles.length - 1;
-			}
-			renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
-			return false;
-		});
-		//上一张
-		$('.prev').click(function(){
-			index --;
-			if(index < 0){
-				index = 0;
-			}
-			renderReviewPhoto(imgInit,index,currentLevelEles,currentParentInfo);
-		});
 	}
 	
 	//点击图片缩略图的header部分
@@ -824,5 +860,17 @@ $(function(){
 	
 	$('.container').mousedown(function(){
 		return false;
+	});
+	
+	//项目简介
+	setObjCenter($('.programProduction'));
+	$('#programProduction').click(function(){
+		$('.commonBg').show();
+		showModal($('.programProduction'),'animated slideOutUp','animated slideInDown');
+	});
+	drag($('.programProduction'));
+	$('.closeBtn').click(function(){
+		$('.commonBg').hide();
+		hideModal($('.programProduction'),'animated slideInDown','animated slideOutUp');
 	});
 })

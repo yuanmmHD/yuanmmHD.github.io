@@ -127,3 +127,84 @@
 	text-align: center;
 	display: none;
 }
+.programProduction{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 800px;
+	height: 550px;
+	background-color: #fff;
+	border-radius: 6px;
+	font-size: 14px;
+	border: 1px solid rgba(0,0,0,.1);
+	z-index: 12;
+	cursor: move;
+	padding: 15px;
+	box-sizing: border-box;
+	color: #000;
+	display: none;
+}
+.programProduction .modalHeader{
+	height: 100px;
+	background-color: rgba(0,0,0,.05);
+	border-radius: 6px;	
+}
+.programProduction .authorPhoto{
+	width: 100px;
+	height: 100px;
+	margin-right: 15px;
+	border-radius: 10px;
+}
+.programProduction .basicInfoTitle{
+	font-weight: bold;
+	height: 34px;
+	line-height: 34px;
+}
+.programProduction .authorBasicInfo dd{
+	line-height: 22px;
+}
+/*项目简介中间内容部分*/
+.programProduction .modalBody{
+	height: 420px;
+	overflow: auto;
+}
+.programProduction .moduleTitle{
+	height: 40px;
+	line-height: 40px;
+}
+.programProduction .moduleContent{
+	color: gray;
+}
+.programProduction .moduleContent li{
+	line-height: 24px;
+}
+.programProduction .moduleContent span{
+	color: steelblue;
+}
+.programProduction .functionOther{
+	display: inline-block;
+	margin-left: 12px;
+	list-style: lower-greek;
+}
+.programProduction .functionOther>li{
+	margin-right: 20px;
+}
+.programProduction .knowledgePoints .moduleContent{
+	list-style: none;
+}
+.programProduction .closeBtn{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	right: 5px;
+	top: 5px;
+	background-color: #fff;
+	border-radius: 50%;
+	text-shadow: none;
+	text-align: center;
+	box-shadow: 0 2px 2px 0px rgba(0,0,0,.5);
+	cursor: pointer;
+	color: rgba(0,0,0,.5);
+	font-size: 26px;
+	line-height: 30px;
+}

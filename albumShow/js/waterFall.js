@@ -20,18 +20,49 @@
     }
 
     WaterFall.prototype.init = function () {
+//  	alert("init");
         var _this = this;
         var resizeFinish;
-        $(window).resize(function() {
-            clearTimeout(resizeFinish);
-            resizeFinish = setTimeout( function () {
-                _this.layoutChange(_this);
-            }, 11);
-        });
+//      $(window).resize(function() {
+
+//      	alert(123);
+
+//          clearTimeout(resizeFinish);
+
+//          resizeFinish = setTimeout( function () {
+
+//              _this.layoutChange(_this);
+
+//          }, 10000);
+
+//      });
+
+//      _this.layoutChange(_this);
+
+//      setTimeout(function() {
+
+//      	alert(456);
+
+//          $(window).resize();
+
+//      }, 5000);
+        
+        
         _this.layoutChange(_this);
-        setTimeout(function() {
-            $(window).resize();
-        }, 500);
+
+//		setTimeout(function() {
+
+			//          $(window).resize();
+
+			clearTimeout(resizeFinish);
+
+			resizeFinish = setTimeout(function() {
+
+				_this.layoutChange(_this);
+
+			}, 100);
+
+//		}, 500);
     };
 
     WaterFall.prototype.calculate = function (singleColumnMode) {

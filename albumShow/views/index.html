@@ -5,7 +5,6 @@
 		<title>yuanmm's albumShow</title>
 		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/bg.css"/>	
 		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
@@ -15,12 +14,13 @@
 		<link rel="stylesheet" type="text/css" href="../css/music.css"/>
 	</head>
 	<body>
-		<audio id="myAudio" src="../audio/blueSky.mp3" autoplay loop></audio>
-		<canvas id="bgCanvas"></canvas>
+		<audio id="myAudio" src="../audio/blueSky.mp3" loop></audio>
+		<canvas id="bgCanvas" style="position: absolute; z-index: -1;"></canvas>
 		<!--按钮列表-->
 		<div class="container clearfix btnList">
 			<div class="albumBtnList">
-				<a class="btn createAlbumBtn" href="javascript:;" id="createAlbumBtn">创建相册</a>
+				<a class="btn" href="javascript:;" id="programProduction">项目简介</a>
+				<a class="btn" href="javascript:;" id="createAlbumBtn">创建相册</a>
 			</div>
 			<div class="photoBtnList clearfix">
 				<span class="checkAll fl" id="checkAll"></span>
@@ -36,7 +36,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<!--相册列表-->
 		<div class="container clearfix albumList">
 				<!--<div class="eachAlbumInfo">
@@ -97,7 +96,6 @@
 			</div>
 		</div>			
 		<!--创建、编辑结束-->
-		
 		<!--遮罩层开始-->
 		<div class="maskLayer" id="maskLayer">
 			<header class="maskLayerHeader clearfix">
@@ -130,7 +128,6 @@
 			</footer>
 		</div>
 		<!--删除模态框结束-->
-		
 		<!--公用模态框   根据点击的按钮确定模态框内的内容-->
 		<div class="commonModal">
 			<header class="modalHeader clearfix">
@@ -146,22 +143,18 @@
 			</footer>
 		</div>		
 		<!--公用模态框结束-->
-		
 		<!--操纵结束提示框开始-->
 		<div class="successTipBox">
 			<span class="successIco"></span>
 			<span class="tipInfo">操作成功</span>
 		</div>
-		
 		<div class="warnTipBox">
 			<span class="warnIco"></span>
 			<span class="tipInfo">失败</span>
 		</div>
 		<!--操纵结束提示框结束-->
-		
 		<!--设置一个统一的遮罩层-->
 		<div class="commonBg"></div>
-
 		<!--设置背景音乐开始-->
 		<div class="musicBg">
 			<div class="music clearfix">
@@ -176,15 +169,64 @@
 			</div>
 		</div>
 		<!--设置背景音乐结束-->
-		
+		<!--点击照片上下页切换提醒  开始-->
+		<div class="previewTipBox">
+			<span class="closeTipBox">×</span>
+			<span class="tipInfo"></span>
+		</div>
+		<!--点击照片上下页切换提醒  结束-->
 		<div class="loading">
 			<img src="../images/loading.gif" id="loadingImg"/>
 		</div>
+		<!--项目简介  开始-->
+		<div class="programProduction">
+			<span class="closeBtn">×</span>
+			<div class="modalHeader">
+				<div class="authorInfo clearfix">
+					<img src="../images/authorImg.png" class="authorPhoto fl"/>
+					<dl class="authorBasicInfo">
+						<dt><h3 class="basicInfoTitle">项目作者</h3></dt>
+						<dd class="authorName">袁满满</dd>
+						<dd class="authorEmail">Email : <a href="mailto:18701555694@163.com">18701555694@163.com</a></dd>
+						<dd class="authorTel">Telephone : <a href="tel:18701555694">18701555694</a></dd>
+					</dl>
+				</div>
+			</div>
+			<ul class="modalBody">
+				<li class="eachModule function">
+					<h3 class="moduleTitle">实现功能简介</h3>
+					<ol class="moduleContent">
+						<li>模拟数据，对数据进行处理，渲染页面显示列表。</li>
+						<li><span>相册操作：</span>创建相册（重命名）、相册编辑（重命名）、设置封面、相册删除。</li>
+						<li><span>照片操作：</span>设置为封面、全选反选、移动到相册、删除、照片预览、上下张切换（键盘左右键亦可）。</li>
+						<li><span>背景音乐：</span>播放暂停，上下首切换。</li>
+						<li><span>其他：</span>照片瀑布流显示；提示框拖拽。</li>
+					</ol>
+				</li>
+				<li class="eachModule knowledgePoints">
+					<h3 class="moduleTitle">运用知识点</h3>
+					<ol class="moduleContent">
+						<li>DOM增删改查、ES6模板字符串、拖拽、canvas、css3动画、H5音频。</li>
+					</ol>
+				</li>
+				<li class="eachModule projectExp">
+					<h3 class="moduleTitle">项目收获</h3>
+					<ol class="moduleContent">
+						<li>该项目主要由jquery实现，一提高了对jquery的使用熟练程度，二对jquery当中的一些事件处理机制有了更深的认识，(例事件嵌套会重复绑定事件，如果不改变代码格式，需绑定事件之前解绑该元素身上的事件)，从而更加规范自己的代码。</li>
+						<li>相册的封面显示设置和照片预览是由原生js实现，因要获取到图片本身的原始宽高，而不能直接固定宽高。</li>
+						<li>该项目由自己独立完成，实现过程中不但对函数的封装和复用有了更深的认识，更认识到对数据操作的重要性。</li>
+						<li>提高了解决bug的能力。</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+		<!--项目简介  结束-->
+	
 		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<!--[if IE]>
 			<script src="../js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
 		<![endif]-->
-		<script src="../js/bgGalaxy.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/bgGalaxy.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/bgSong.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/dataControl.js" type="text/javascript" charset="utf-8"></script>

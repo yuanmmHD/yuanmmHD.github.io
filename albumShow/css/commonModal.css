@@ -213,3 +213,31 @@
 .commonModal .modalHeader:hover,.deleteBox .modalHeader:hover{
 	cursor: move;
 }
+
+.previewTipBox{
+	position: absolute;
+	left: 50%;
+	top: 100px;
+	margin-left: -125px;
+	width: 250px;
+	height: 70px;
+	padding: 23px 30px;
+	border-radius: 6px;
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,.8);
+	color: #fff;
+	font-size: 14px;
+	display: none;
+}
+/*照片预览的提示框*/
+.previewTipBox .closeTipBox{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: center;
+	font-size: 20px;
+	line-height: 20px;
+	cursor: pointer;
+}

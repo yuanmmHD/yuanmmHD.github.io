@@ -93,7 +93,7 @@
 	top: 2px;
 	width: 100%;
 	height: 70px;
-	z-index: 50;
+	z-index: 10;
 }
 .eachAlbumBox .bigNail{
 	width: 30px;
@@ -105,7 +105,7 @@
 	background-image: url(../images/bigNail1.png);
 	background-repeat: no-repeat;
 	background-size: contain;
-	z-index: 70;
+	z-index: 12;
 }
 .eachAlbumBox .smallNail{
 	width: 10px;
@@ -114,7 +114,7 @@
 	position: absolute;
 	top: 90px;
 	border-radius: 50%;
-	z-index: 60;
+	z-index: 11;
 }
 .eachAlbumBox .leftNail{
 	left: 30px;
@@ -129,7 +129,7 @@
 	height: 4px;
 	background-color: rgba(255,255,255,.4);
 	border-radius: 4px;
-	z-index: 50;
+	z-index: 10;
 }
 .eachAlbumBox .leftLine{
 	left: 35px;
@@ -150,7 +150,7 @@
 	position: absolute;
 	left: 50%;
 	top: 20px;
-	z-index: 20;
+	z-index: 12;
 	margin-left: -30px;
 	background: url(../images/23.gif) no-repeat;
 	background-size: cover;

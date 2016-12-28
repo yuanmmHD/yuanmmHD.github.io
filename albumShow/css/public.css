@@ -41,6 +41,7 @@ body {
 	top: 0;
 	background-color: rgba(0,0,0,.5);
 	display: none;
+	z-index: 12;
 }
 
 .container {
@@ -49,7 +50,6 @@ body {
 	padding: 0 30px;
 	box-sizing: border-box;
 }
-
 
 /*设置滚动条(有兼容问题,只有webkit内核管用)*/
 
